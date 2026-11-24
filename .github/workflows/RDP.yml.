@@ -1,0 +1,14 @@
+<CodeBlock language="yaml" editable>
+- name: Configure Core RDP Settings
+shell: powershell
+run: |
+$rdpPath = 'HKLM:\System\CurrentControlSet\Control\Terminal Server'
+$tcpPath = 'HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp'
+Set-ItemProperty -Path $rdpPath -Name 'fDenyTSConnections' -Value 0 -Force
+# Keep Network Level Authentication enabled
+Set-ItemProperty -Path $tcpPath -Name 'UserAuthentication' -Value 1 -Force
+# Use the secure RDP security layer
+Set-ItemProperty -Path $tcpPath -Name 'SecurityLayer' -Value 2 -Force
+Enable-NetFirewallRule -DisplayGroup 'Remote Desktop'
+Restart-Service -Name TermService -Force
+</CodeBlock>
