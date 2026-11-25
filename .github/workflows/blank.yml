@@ -1,13 +1,3 @@
-# 🚀 Windows RDP Complete Setup
-
-### 📁 File Path in GitHub Repository:
-`.github/workflows/windows_rdp.yml`
-
----
-
-### 💻 Code to Paste Inside `.github/workflows/windows_rdp.yml`:
-
-```yaml
 name: 🚀 High-Speed Windows RDP (Official Azure VM via Tailscale)
 
 on:
@@ -62,3 +52,4 @@ jobs:
                 Write-Host "🟢 Windows RDP Active: $i / $totalMinutes minutes"
             }
         }
+        
